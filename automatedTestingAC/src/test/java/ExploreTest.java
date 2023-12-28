@@ -9,9 +9,7 @@ import org.testng.annotations.Test;
 
 public class ExploreTest {
 
-//Declare a Webdriver variable
     public WebDriver driver;
-    //Declare a test URL variable
     public String testURL = "https://actacroatica.com/hr/";
     //----------------------Test Setup-----------------------------------
     @BeforeMethod
