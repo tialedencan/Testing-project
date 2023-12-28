@@ -14,9 +14,9 @@ public class Login {
     }
 
     By loginBtn = By.xpath("//*[@id=\"stage\"]/nav/div/div[2]/ul/li[1]/a");
-    By chromeEmailInputField = By.name("login");
-    By chromePasswordInputField = By.name("password");
-    By chromeSubmitBtn = By.name("submit");
+    By emailInputField = By.name("login");
+    By passwordInputField = By.name("password");
+    By submitBtn = By.name("submit");
     By profileIconAndName = By.xpath("//*[@id=\"stage\"]/nav/div/div[2]/ul/li/a");
 
     public void getToLoginForm() {
@@ -27,9 +27,9 @@ public class Login {
     public void enterLoginInformation() {
         String email = System.getenv("EmailAC");
         String password = System.getenv("PasswordAC");
-        driver.findElement(chromeEmailInputField).sendKeys(email);
-        driver.findElement(chromePasswordInputField).sendKeys(password);
-        driver.findElement(chromeSubmitBtn).click();
+        driver.findElement(emailInputField).sendKeys(email);
+        driver.findElement(passwordInputField).sendKeys(password);
+        driver.findElement(submitBtn).click();
     }
 
     public WebElement getProfileIconAndNameElement() {

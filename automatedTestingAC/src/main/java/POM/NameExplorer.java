@@ -11,27 +11,27 @@ public class NameExplorer {
         this.driver = driver;
     }
 
-    By chromeExploreBtn = By.xpath("//*[@id=\"hero-copy\"]/div/div/div/a[2]/div");
-    By chromeSearchNameTextBox = By.name("q");
-    By chromeNameLink = By.xpath("//*[@id=\"stage\"]/div[1]/div[2]/div/div/ul/li[2]/h3/a");
-    By chromeNameResult = By.xpath("//*[@id=\"stage\"]/div[1]/div/div[1]/div/p");
+    By exploreBtn = By.xpath("//*[@id=\"hero-copy\"]/div/div/div/a[2]/div");
+    By searchNameTextBox = By.name("q");
+    By nameLink = By.xpath("//*[@id=\"stage\"]/div[1]/div[2]/div/div/ul/li[2]/h3/a");
+    By nameResult = By.xpath("//*[@id=\"stage\"]/div[1]/div/div[1]/div/p");
 
     public void clickExploreButton(){
-        driver.findElement(chromeExploreBtn).click();
+        driver.findElement(exploreBtn).click();
     }
 
     public void enterName(String name) {
-        WebElement searchNameTextBox = driver.findElement(chromeSearchNameTextBox);
+        WebElement searchNameTextBox = driver.findElement(this.searchNameTextBox);
         searchNameTextBox.sendKeys(name);
         searchNameTextBox.submit();
     }
 
     public void clickNameLink() {
-        driver.findElement(chromeNameLink).click();
+        driver.findElement(nameLink).click();
     }
 
     public String getExploredNameResult() {
-        return driver.findElement(chromeNameResult).getText();
+        return driver.findElement(nameResult).getText();
     }
 
 }

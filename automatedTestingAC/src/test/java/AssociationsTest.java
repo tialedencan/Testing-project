@@ -1,8 +1,6 @@
 import POM.Association;
 import POM.Login;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -13,15 +11,13 @@ import java.time.Duration;
 public class AssociationsTest {
 
     public WebDriver driver;
-    public String testURL = "https://actacroatica.com/hr/";
-
+    public String testURL = Option.testURL;
+    BrowserFactory browserFactory = new BrowserFactory();
     @BeforeMethod
     public void setupTest() {
-        String chromeDriverPath = System.getenv("ChromeDriverTesting");
-        System.setProperty("webdriver.chrome.driver", chromeDriverPath);
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--incognito");
-        driver = new ChromeDriver(options);
+        DriverFactory.getInstance().setDriver(browserFactory.createBrowserInstance(Option.browser));
+        driver = DriverFactory.getInstance().getDriver();
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.navigate().to(testURL);
     }
@@ -43,7 +39,7 @@ public class AssociationsTest {
 
     @AfterMethod
     public void teardownTest() {
-        driver.quit();
+        DriverFactory.getInstance().closeBrowser();
     }
 
 }
