@@ -12,7 +12,6 @@ public class Mention {
 
     By chromePreserveMemoryBtn = By.xpath("//*[@id=\"hero-copy\"]/div/div/div/a[3]/div");
     By chromeVinajMention = By.xpath("//*[@id=\"stage\"]/div[1]/div/div[2]/div[1]/ul/li[3]/h3");
-
     By chromeMentionTitle = By.xpath("//*[@id=\"stage\"]/div[1]/div/div[1]/h3");
 
     public void clickPreserveMemoryButton(){

@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.time.Duration;
+
 public class Login {
     private  WebDriver driver;
 
@@ -17,9 +19,9 @@ public class Login {
     By chromeSubmitBtn = By.name("submit");
     By profileIconAndName = By.xpath("//*[@id=\"stage\"]/nav/div/div[2]/ul/li/a");
 
-    public void getToLoginForm() throws InterruptedException {
+    public void getToLoginForm() {
         driver.findElement(loginBtn).click();
-        Thread.sleep(5000);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
     public void enterLoginInformation() {

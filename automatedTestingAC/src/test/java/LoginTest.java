@@ -9,6 +9,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
 public class LoginTest {
     public WebDriver driver;
     public String testURL = "https://actacroatica.com/hr/";
@@ -20,17 +23,17 @@ public class LoginTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--incognito");
         driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.navigate().to(testURL);
     }
     @Test
-    public void LoginUserTest() throws InterruptedException {
+    public void LoginUserTest() {
         Login loginPOM = new Login(driver);
         loginPOM.getToLoginForm();
         loginPOM.enterLoginInformation();
         WebElement profileElement = loginPOM.getProfileIconAndNameElement();
 
         Assert.assertEquals(profileElement,driver.findElement(By.xpath("//*[@id=\"stage\"]/nav/div/div[2]/ul/li/a")));
-
     }
 
     @AfterMethod
