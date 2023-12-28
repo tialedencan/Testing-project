@@ -15,7 +15,8 @@ public class MentionTest {
 
     @BeforeMethod
     public void setupTest() {
-        System.setProperty("webdriver.chrome.driver", "D:\\Faks\\DIPLOMSKI\\1.semestar\\MTTPP\\projekt\\chromedriver.exe");
+        String chromeDriverPath = System.getenv("ChromeDriverTesting");
+        System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--incognito");
         driver = new ChromeDriver(options);
@@ -23,7 +24,18 @@ public class MentionTest {
     }
 
     @Test
+    public void getToMentionPage() {
+        driver.manage().window().maximize();
+        Mention mention = new Mention(driver);
+        mention.clickPreserveMemoryButton();
+        String result = mention.getMentionTitle();
+        Assert.assertEquals(result, "Spomen");
+        System.out.print(result);
+    }
+
+    @Test
     public void findMention() {
+        driver.manage().window().maximize();
         Mention mention = new Mention(driver);
         mention.clickPreserveMemoryButton();
         String result = mention.getMentionVinaj();

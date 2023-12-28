@@ -14,21 +14,18 @@ public class ExploreTest {
     //----------------------Test Setup-----------------------------------
     @BeforeMethod
     public void setupTest() {
-        System.setProperty("webdriver.chrome.driver", "D:\\Faks\\DIPLOMSKI\\1.semestar\\MTTPP\\projekt\\chromedriver.exe");
-        //System.setProperty("webdriver.gecko.driver", "D:\\Faks\\DIPLOMSKI\\1.semestar\\MTTPP\\projekt\\geckodriver.exe");
+        String chromeDriverPath = System.getenv("ChromeDriverTesting");
+        System.setProperty("webdriver.chrome.driver", chromeDriverPath);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--incognito");
         driver = new ChromeDriver(options);
-        //driver = new FirefoxDriver();
         driver.navigate().to(testURL);
     }
     @Test
-    public void exploreNameTest() throws InterruptedException {
+    public void exploreNameTest() {
         NameExplorer explorer = new NameExplorer(driver);
         driver.manage().window().maximize();
-        //Thread.sleep(5000);
         explorer.clickExploreButton();
-        //Thread.sleep(5000);
         explorer.enterName("Tia");
         explorer.clickNameLink();
         String result = explorer.getExploredNameResult();
@@ -39,7 +36,6 @@ public class ExploreTest {
     //---------------Test TearDown-----------------------------------
     @AfterMethod
     public void teardownTest() {
-    //Close browser and end the session
         driver.quit();
     }
 }
